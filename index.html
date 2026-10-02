@@ -1,507 +1,1497 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rohit Kumar Gupta — Quality Assurance Engineer</title>
-<meta name="description" content="Rohit Kumar Gupta, QA Engineer at Quick Heal Technologies. Manual, API, performance, and automated testing across Agile sprints.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#F5F6F8;
-    --surface:#FFFFFF;
-    --ink:#0F1626;
-    --muted:#5B6472;
-    --line:#E3E6EB;
-    --accent:#0E9F6E;
-    --accent-ink:#08573C;
-    --hero-bg:#0A1120;
-    --hero-ink:#F4F6F9;
-    --hero-muted:#8D96A6;
-    --radius:14px;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation:none !important; transition:none !important;}
-  }
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter',system-ui,sans-serif;
-    font-size:16px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  h1,h2,h3{
-    font-family:'Sora',system-ui,sans-serif;
-    margin:0;
-    letter-spacing:-0.01em;
-  }
-  a{color:inherit;}
-  .mono{font-family:'IBM Plex Mono',monospace;}
-  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  /* ---------- NAV ---------- */
-  .nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(10,17,32,0.92);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid rgba(255,255,255,0.08);
-  }
-  .nav .wrap{display:flex; align-items:center; justify-content:space-between; height:60px;}
-  .nav-brand{
-    color:var(--hero-ink); font-family:'Sora',sans-serif; font-weight:700; font-size:15px;
-    text-decoration:none; letter-spacing:-0.01em;
-  }
-  .nav-links{display:flex; gap:28px; list-style:none; margin:0; padding:0;}
-  .nav-links a{
-    color:var(--hero-muted); text-decoration:none; font-size:13.5px; font-weight:500;
-    font-family:'IBM Plex Mono',monospace; text-transform:lowercase;
-    transition:color .15s ease;
-  }
-  .nav-links a:hover{color:var(--hero-ink);}
-  .nav-toggle{display:none; background:none; border:0; color:var(--hero-ink); font-size:22px; cursor:pointer;}
-  @media (max-width:720px){
-    .nav-links{
-      position:absolute; top:60px; left:0; right:0; background:var(--hero-bg);
-      flex-direction:column; padding:18px 28px; gap:16px; border-bottom:1px solid rgba(255,255,255,0.08);
-      display:none;
+  <title>Rohit Kumar Gupta | QA Engineer</title>
+
+  <meta
+    name="description"
+    content="QA Engineer specializing in web application testing, API testing, test automation, e-commerce, Salesforce, payment gateway testing and performance testing."
+  />
+
+  <meta name="author" content="Rohit Kumar Gupta" />
+
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --surface: #ffffff;
+      --surface-soft: #f1f5f9;
+      --text: #172033;
+      --muted: #667085;
+      --border: #e4e7ec;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --success: #15803d;
+      --dark: #101828;
+      --shadow: 0 10px 30px rgba(16, 24, 40, 0.07);
+      --radius: 14px;
     }
-    .nav-links.open{display:flex;}
-    .nav-toggle{display:block;}
-  }
 
-  /* ---------- HERO ---------- */
-  .hero{
-    background:
-      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(14,159,110,0.18), transparent 60%),
-      var(--hero-bg);
-    color:var(--hero-ink);
-    padding:88px 0 76px;
-  }
-  .status-badge{
-    display:inline-flex; align-items:center; gap:9px;
-    font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:500;
-    color:var(--hero-muted);
-    background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.12);
-    padding:7px 14px; border-radius:100px;
-    margin-bottom:28px;
-  }
-  .status-dot{
-    width:7px; height:7px; border-radius:50%; background:var(--accent);
-    box-shadow:0 0 0 3px rgba(14,159,110,0.22);
-    flex-shrink:0;
-  }
-  .hero h1{font-size:clamp(36px,5.5vw,58px); font-weight:800; line-height:1.05; color:#fff;}
-  .hero .role{
-    font-family:'IBM Plex Mono',monospace; font-size:15px; color:var(--accent);
-    margin-top:14px; letter-spacing:0.02em;
-  }
-  .hero p.lede{
-    max-width:560px; color:var(--hero-muted); font-size:16.5px; margin-top:22px; line-height:1.7;
-  }
-  .hero-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:32px;}
-  .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    font-family:'Inter',sans-serif; font-weight:600; font-size:14px;
-    padding:11px 20px; border-radius:9px; text-decoration:none;
-    border:1px solid transparent; transition:all .15s ease;
-  }
-  .btn-primary{background:var(--accent); color:#04140D;}
-  .btn-primary:hover{background:#12B87E;}
-  .btn-ghost{border-color:rgba(255,255,255,0.18); color:var(--hero-ink);}
-  .btn-ghost:hover{border-color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.04);}
-  .btn svg{width:16px; height:16px;}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-  .metric-strip{
-    display:grid; grid-template-columns:repeat(3,1fr);
-    border-top:1px solid rgba(255,255,255,0.1);
-    margin-top:56px; padding-top:28px;
-    max-width:640px;
-  }
-  .metric-strip div{padding-right:16px;}
-  .metric-strip .num{font-family:'Sora',sans-serif; font-weight:700; font-size:24px; color:#fff;}
-  .metric-strip .label{font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--hero-muted); margin-top:4px; text-transform:uppercase; letter-spacing:0.04em;}
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-  /* ---------- SECTIONS ---------- */
-  section{padding:64px 0;}
-  .eyebrow{
-    font-family:'IBM Plex Mono',monospace; font-size:12.5px; font-weight:500;
-    color:var(--accent-ink); text-transform:uppercase; letter-spacing:0.06em;
-    display:flex; align-items:center; gap:9px; margin-bottom:12px;
-  }
-  .eyebrow::before{content:""; width:16px; height:1.5px; background:var(--accent);}
-  .section-head{margin-bottom:36px;}
-  .section-head h2{font-size:30px; font-weight:700;}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  .card{
-    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
-    padding:28px 30px;
-  }
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
 
-  /* ---- About ---- */
-  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:44px; align-items:start;}
-  .about-grid p{color:var(--muted); font-size:15.5px; margin:0 0 14px;}
-  .about-grid p:last-child{margin-bottom:0;}
-  .info-list{list-style:none; margin:0; padding:0; display:grid; gap:14px;}
-  .info-list li{display:flex; justify-content:space-between; font-size:14px; border-bottom:1px dashed var(--line); padding-bottom:12px;}
-  .info-list .k{font-family:'IBM Plex Mono',monospace; color:var(--muted); font-size:12.5px; text-transform:uppercase; letter-spacing:0.03em;}
-  .info-list .v{font-weight:600; text-align:right;}
-  @media (max-width:760px){ .about-grid{grid-template-columns:1fr;} }
+    /* NAVIGATION */
 
-  /* ---- Experience / Projects ---- */
-  .entry{
-    display:grid; grid-template-columns:190px 1fr; gap:28px;
-    padding:26px 0; border-top:1px solid var(--line);
-  }
-  .entry:first-child{border-top:none;}
-  .entry-time{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--muted); padding-top:3px;}
-  .entry-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap;}
-  .entry-head h3{font-size:18px; font-weight:700;}
-  .entry-org{color:var(--accent-ink); font-weight:600; font-size:14.5px; margin-top:2px;}
-  .verified-tag{
-    font-family:'IBM Plex Mono',monospace; font-size:11px; font-weight:500;
-    color:var(--accent-ink); background:rgba(14,159,110,0.1);
-    border:1px solid rgba(14,159,110,0.28);
-    padding:3px 9px; border-radius:100px; white-space:nowrap;
-  }
-  .entry ul{margin:14px 0 0; padding-left:18px; color:var(--muted); font-size:14.5px;}
-  .entry ul li{margin-bottom:7px;}
-  .entry ul li::marker{color:var(--accent);}
-  .entry-links{margin-top:12px; display:flex; gap:14px;}
-  .entry-links a{font-family:'IBM Plex Mono',monospace; font-size:12.5px; color:var(--accent-ink); text-decoration:none; border-bottom:1px solid rgba(14,159,110,0.35);}
-  @media (max-width:640px){ .entry{grid-template-columns:1fr; gap:6px;} }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
 
-  /* ---- Skills ---- */
-  .skills-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:22px 40px;}
-  .skill-cat h4{font-family:'IBM Plex Mono',monospace; font-size:12.5px; text-transform:uppercase; letter-spacing:0.04em; color:var(--muted); margin-bottom:12px; font-weight:500;}
-  .pill-row{display:flex; flex-wrap:wrap; gap:8px;}
-  .pill{
-    font-size:13px; font-weight:500; padding:6px 12px; border-radius:7px;
-    background:var(--surface); border:1px solid var(--line); color:var(--ink);
-  }
-  @media (max-width:640px){ .skills-grid{grid-template-columns:1fr;} }
+    .nav-inner {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-  /* ---- Certifications ---- */
-  .cert-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
-  .cert-card{
-    background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:20px 22px;
-    display:flex; flex-direction:column; gap:6px;
-  }
-  .cert-card .issuer{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted);}
-  .cert-card h4{font-size:15.5px; font-weight:700; line-height:1.35;}
-  .cert-card a{text-decoration:none;}
-  .cert-card a h4:hover{color:var(--accent-ink);}
-  @media (max-width:640px){ .cert-grid{grid-template-columns:1fr;} }
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--dark);
+    }
 
-  /* ---- Education & Achievements ---- */
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
-  @media (max-width:760px){ .two-col{grid-template-columns:1fr;} }
-  .achieve-list{list-style:none; margin:0; padding:0; display:grid; gap:11px;}
-  .achieve-list li{display:flex; gap:10px; font-size:14.5px; align-items:flex-start;}
-  .achieve-list li svg{width:16px; height:16px; color:var(--accent); flex-shrink:0; margin-top:3px;}
+    .logo span {
+      color: var(--primary);
+    }
 
-  /* ---- Contact ---- */
-  .contact{
-    background:var(--hero-bg); color:var(--hero-ink); border-radius:20px;
-    padding:56px 44px; text-align:center;
-  }
-  .contact h2{color:#fff; font-size:28px;}
-  .contact p{color:var(--hero-muted); max-width:440px; margin:14px auto 30px; font-size:15px;}
-  .contact-links{display:flex; justify-content:center; gap:14px; flex-wrap:wrap;}
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: #475467;
+    }
 
-  footer{padding:32px 0; text-align:center; color:var(--muted); font-size:13px; font-family:'IBM Plex Mono',monospace;}
-</style>
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 100px 0 80px;
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(37, 99, 235, 0.08),
+          transparent 35%
+        ),
+        var(--bg);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 30px;
+      background: #eaf1ff;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero h2 {
+      font-size: 23px;
+      font-weight: 600;
+      color: #344054;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 690px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: white;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* QA SCORECARD */
+
+    .qa-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .qa-card h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .qa-item {
+      margin-bottom: 18px;
+    }
+
+    .qa-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .qa-label {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 7px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .progress {
+      height: 7px;
+      background: #e9eef5;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      background: var(--primary);
+      border-radius: inherit;
+    }
+
+    /* SECTIONS */
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 45px;
+    }
+
+    .section-heading span {
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-heading h2 {
+      margin-top: 7px;
+      font-size: 34px;
+      letter-spacing: -0.7px;
+    }
+
+    .section-heading p {
+      margin-top: 10px;
+      color: var(--muted);
+      max-width: 700px;
+    }
+
+    /* ABOUT */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      font-size: 19px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .focus-list {
+      list-style: none;
+    }
+
+    .focus-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      color: #475467;
+      font-size: 14px;
+    }
+
+    .focus-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .focus-list li::before {
+      content: "✓";
+      color: var(--success);
+      font-weight: 800;
+      margin-right: 9px;
+    }
+
+    /* EXPERIENCE */
+
+    .timeline {
+      position: relative;
+      margin-left: 12px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 5px;
+      bottom: 5px;
+      width: 2px;
+      background: #dbe3ef;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 38px;
+      margin-bottom: 42px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 16px;
+      height: 16px;
+      background: var(--primary);
+      border: 3px solid white;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px #bfdbfe;
+    }
+
+    .timeline-item h3 {
+      font-size: 21px;
+    }
+
+    .timeline-meta {
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 700;
+      margin: 4px 0 12px;
+    }
+
+    .timeline-item ul {
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .timeline-item li {
+      margin-bottom: 7px;
+    }
+
+    /* SKILLS */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .skill-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 23px;
+      transition: 0.25s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+      border-color: #c7d7f5;
+    }
+
+    .skill-card h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* PROJECTS */
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .project {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 27px;
+      transition: 0.25s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-number {
+      font-size: 12px;
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .project h3 {
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 5px 9px;
+      background: var(--surface-soft);
+      color: #475467;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* QA COVERAGE */
+
+    .coverage-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .coverage {
+      padding: 22px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .coverage strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .coverage span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* CERTIFICATIONS */
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .cert {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+    }
+
+    .cert h3 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .cert p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* CONTACT */
+
+    .contact-box {
+      background: var(--dark);
+      color: white;
+      border-radius: 18px;
+      padding: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .contact-box h2 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      color: #98a2b3;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      padding: 10px 15px;
+      border: 1px solid #344054;
+      border-radius: 7px;
+      color: #f2f4f7;
+      font-size: 13px;
+    }
+
+    .contact-links a:hover {
+      border-color: #84adff;
+      color: #84adff;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 30px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* BACK TO TOP */
+
+    #topButton {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      cursor: pointer;
+      display: none;
+      font-size: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 850px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 70px 0;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .coverage-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-box {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 35px;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .skills-grid,
+      .coverage-grid,
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 44px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .contact-box {
+        padding: 28px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<nav class="nav">
-  <div class="wrap">
-    <a class="nav-brand" href="#top">RKG</a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#about">about</a></li>
-      <li><a href="#experience">experience</a></li>
-      <li><a href="#projects">projects</a></li>
-      <li><a href="#skills">skills</a></li>
-      <li><a href="#certifications">certs</a></li>
-      <li><a href="#contact">contact</a></li>
-    </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
-  </div>
-</nav>
+  <!-- NAVIGATION -->
 
-<header class="hero" id="top">
-  <div class="wrap">
-    <div class="status-badge"><span class="status-dot"></span>Currently at Quick Heal Technologies — Pune, India</div>
-    <h1>Rohit Kumar Gupta</h1>
-    <div class="role">Quality Assurance Engineer</div>
-    <p class="lede">I test software the way it's actually going to be used — across UI, API, and database layers — and write the strategy documents, RACI matrices, and BDD criteria that keep Agile teams aligned on what "done" means.</p>
-    <div class="hero-actions">
-      <a class="btn btn-primary" href="mailto:rohitkumargupta1007@gmail.com">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><path d="M2 6h20v12H2z"/></svg>
-        Email me
-      </a>
-      <a class="btn btn-ghost" href="https://github.com/RohitKumarGupta10" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.2 9.3 7.8 10.8.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 016 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0023.5 12C23.5 5.7 18.3.5 12 .5z"/></svg>
-        GitHub
-      </a>
-      <a class="btn btn-ghost" href="https://www.linkedin.com/in/rohitkumargupta10/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.4h-3.5v-5.5c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.6H9.5V9h3.4v1.6h.05c.5-.9 1.6-1.8 3.3-1.8 3.6 0 4.2 2.4 4.2 5.4v6.2zM5.3 7.4a2 2 0 110-4 2 2 0 010 4zM7 20.4H3.6V9H7v11.4z"/></svg>
-        LinkedIn
-      </a>
-    </div>
-    <div class="metric-strip">
-      <div><div class="num">1+ yr</div><div class="label">Hands-on QA</div></div>
-      <div><div class="num">9.04</div><div class="label">B.Tech CGPA</div></div>
-      <div><div class="num">4</div><div class="label">Certifications</div></div>
-    </div>
-  </div>
-</header>
+  <nav>
+    <div class="container nav-inner">
 
-<main>
+      <a href="#home" class="logo">
+        Rohit<span>.</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+
+  <!-- HERO -->
+
+  <header class="hero" id="home">
+
+    <div class="container hero-grid">
+
+      <div>
+
+        <span class="eyebrow">
+          QA ENGINEER I
+        </span>
+
+        <h1>
+          Rohit Kumar<br />
+          <span>Gupta</span>
+        </h1>
+
+        <h2>
+          Software Quality Assurance Engineer
+        </h2>
+
+        <p>
+          QA Engineer specializing in web application testing, API validation,
+          test automation, e-commerce workflows, CRM integrations, payment
+          systems and performance testing. Experienced in validating
+          business-critical applications across Retail and Enterprise
+          platforms.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a
+            href="https://github.com/RohitKumarGupta10"
+            target="_blank"
+            class="btn btn-primary"
+          >
+            GitHub
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/rohitkumargupta10/"
+            target="_blank"
+            class="btn btn-secondary"
+          >
+            LinkedIn
+          </a>
+
+          <a
+            href="mailto:rohitkumargupta1007@gmail.com"
+            class="btn btn-secondary"
+          >
+            Contact Me
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- QA SCORECARD -->
+
+      <div class="qa-card">
+
+        <h3>QA Capability</h3>
+
+        <div class="qa-item">
+          <div class="qa-label">
+            <span>Manual & Functional Testing</span>
+            <span>95%</span>
+          </div>
+          <div class="progress">
+            <span style="width:95%"></span>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-label">
+            <span>API Testing</span>
+            <span>90%</span>
+          </div>
+          <div class="progress">
+            <span style="width:90%"></span>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-label">
+            <span>Web & E-commerce Testing</span>
+            <span>95%</span>
+          </div>
+          <div class="progress">
+            <span style="width:95%"></span>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-label">
+            <span>Test Automation</span>
+            <span>80%</span>
+          </div>
+          <div class="progress">
+            <span style="width:80%"></span>
+          </div>
+        </div>
+
+        <div class="qa-item">
+          <div class="qa-label">
+            <span>Performance Testing</span>
+            <span>75%</span>
+          </div>
+          <div class="progress">
+            <span style="width:75%"></span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- ABOUT -->
 
   <section id="about">
-    <div class="wrap">
-      <div class="eyebrow">About</div>
-      <div class="about-grid">
-        <div>
-          <p>I'm a QA Engineer at Quick Heal Technologies, where I moved from intern to full-time after a year of testing Magento-based e-commerce systems. My day-to-day covers functional, regression, API, performance, security, and cross-browser testing — plus writing the test cases and defect reports that keep releases predictable.</p>
-          <p>Outside of core QA work, I build small automation tools to sharpen my scripting — most recently a Selenium-based script that monitors website performance and runs unattended on GitHub Actions. I like testing that's structured: clear ownership, clear acceptance criteria, clear evidence.</p>
-        </div>
-        <ul class="info-list">
-          <li><span class="k">Location</span><span class="v">Pune, Maharashtra</span></li>
-          <li><span class="k">Role</span><span class="v">QA Engineer I</span></li>
-          <li><span class="k">Company</span><span class="v">Quick Heal Technologies</span></li>
-          <li><span class="k">Education</span><span class="v">B.Tech, CSE</span></li>
-          <li><span class="k">Email</span><span class="v">rohitkumargupta1007@gmail.com</span></li>
-        </ul>
+
+    <div class="container">
+
+      <div class="section-heading">
+        <span>Profile</span>
+        <h2>About Me</h2>
+        <p>
+          Quality-focused engineer with hands-on experience across the
+          complete software testing lifecycle.
+        </p>
       </div>
+
+      <div class="about-grid">
+
+        <div class="card">
+
+          <h3>Quality Assurance Focus</h3>
+
+          <p>
+            I work across functional, regression, integration, API,
+            compatibility, UAT, performance and release validation.
+            My testing approach focuses on identifying functional defects,
+            data issues, integration failures and real-world edge cases
+            before production release.
+          </p>
+
+          <br />
+
+          <p>
+            My current work includes Magento 2 e-commerce platforms,
+            WordPress enterprise websites, Salesforce integrations,
+            payment gateways and automated QA workflows.
+          </p>
+
+        </div>
+
+
+        <div class="card">
+
+          <h3>Core Focus Areas</h3>
+
+          <ul class="focus-list">
+            <li>Web Application Testing</li>
+            <li>API & Integration Testing</li>
+            <li>E-commerce & Checkout Testing</li>
+            <li>Payment Gateway Testing</li>
+            <li>Salesforce & CRM Testing</li>
+            <li>Automation & Regression Testing</li>
+            <li>Performance Testing</li>
+            <li>UAT & Production Validation</li>
+          </ul>
+
+        </div>
+
+      </div>
+
     </div>
+
   </section>
+
+
+  <!-- EXPERIENCE -->
 
   <section id="experience">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Experience</div>
-        <h2>Where I've worked</h2>
+
+    <div class="container">
+
+      <div class="section-heading">
+        <span>Career</span>
+        <h2>Professional Experience</h2>
       </div>
-      <div class="card">
-        <div class="entry">
-          <div class="entry-time">Jun 2026 — Present<br>Pune, India</div>
-          <div>
-            <div class="entry-head">
-              <div>
-                <h3>QA Engineer I</h3>
-                <div class="entry-org">Quick Heal Technologies</div>
-              </div>
-              <span class="verified-tag">✓ current role</span>
-            </div>
-            <ul>
-              <li>Promoted to QA Engineer I after a one-year internship supporting Magento-based e-commerce applications.</li>
-              <li>Execute functional, regression, smoke, API, performance, security, cross-browser, and UAT testing across web and mobile platforms.</li>
-              <li>Design test cases, report defects in Jira, and perform re-testing, regression testing, and release validation within Agile sprints.</li>
-            </ul>
+
+
+      <div class="timeline">
+
+        <!-- QA ENGINEER -->
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+          <h3>QA Engineer I</h3>
+
+          <div class="timeline-meta">
+            Quick Heal Technologies Ltd · Jun 2026 – Present · Pune
           </div>
+
+          <ul>
+
+            <li>
+              Test Magento 2 based e-commerce and CRM-integrated web
+              applications across Quick Heal Retail and Seqrite Enterprise
+              platforms.
+            </li>
+
+            <li>
+              Perform Functional, Regression, Integration, System, UAT,
+              API, Compatibility, Performance and security-focused testing.
+            </li>
+
+            <li>
+              Validate product selection, variants, pricing, cart, checkout,
+              payment processing, order creation, renewals and auto-renewal
+              workflows.
+            </li>
+
+            <li>
+              Test PhonePe, Razorpay, Comviva, Stripe and Adyen payment
+              workflows including successful, failed, cancelled, retry,
+              timeout and recurring payment scenarios.
+            </li>
+
+            <li>
+              Perform REST API testing using Postman and validate
+              authentication, tokens, JSON payloads, status codes,
+              transactions and application data.
+            </li>
+
+            <li>
+              Validate Seqrite WordPress lead-generation workflows and
+              Web-to-Salesforce integrations including field mapping,
+              synchronization and Salesforce dashboards.
+            </li>
+
+            <li>
+              Create Playwright automation scripts for critical web
+              regression scenarios and perform performance testing using
+              JMeter.
+            </li>
+
+            <li>
+              Investigate defects using browser DevTools, network requests,
+              console logs and API responses and manage the complete defect
+              lifecycle through Jira.
+            </li>
+
+          </ul>
+
         </div>
-        <div class="entry">
-          <div class="entry-time">Jun 2025 — Jun 2026<br>Pune, India</div>
-          <div>
-            <div class="entry-head">
-              <div>
-                <h3>QA Intern</h3>
-                <div class="entry-org">Quick Heal Technologies</div>
-              </div>
-              <span class="verified-tag">✓ completed</span>
-            </div>
-            <ul>
-              <li>Performed functional, regression, smoke, integration, and compatibility testing.</li>
-              <li>Wrote Playwright automation scripts to cover key regression scenarios.</li>
-              <li>Executed REST API testing with Postman and load testing with JMeter while managing the complete defect lifecycle.</li>
-            </ul>
+
+
+        <!-- QA INTERN -->
+
+        <div class="timeline-item">
+
+          <div class="timeline-dot"></div>
+
+          <h3>QA Intern</h3>
+
+          <div class="timeline-meta">
+            Quick Heal Technologies Ltd · Jun 2025 – Jun 2026 · Pune
           </div>
+
+          <ul>
+
+            <li>
+              Supported QA for Magento 2 website revamp projects covering
+              Functional, Regression, Integration, System and Compatibility
+              Testing.
+            </li>
+
+            <li>
+              Tested product pages, variants, pricing, cart, checkout,
+              payment and order workflows across desktop and mobile browsers.
+            </li>
+
+            <li>
+              Created Playwright automation scripts and performed API
+              testing using Postman.
+            </li>
+
+            <li>
+              Performed JMeter load testing and analyzed application response
+              times and API behavior.
+            </li>
+
+            <li>
+              Executed UAT and production validation, verified fixes and
+              performed regression testing for releases.
+            </li>
+
+          </ul>
+
         </div>
+
       </div>
+
     </div>
+
   </section>
 
-  <section id="projects">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Projects</div>
-        <h2>Things I've built</h2>
+
+  <!-- QA COVERAGE -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-heading">
+        <span>Testing Expertise</span>
+        <h2>QA Coverage</h2>
       </div>
-      <div class="card">
-        <div class="entry">
-          <div class="entry-time">2026<br>Personal Project</div>
-          <div>
-            <div class="entry-head">
-              <div>
-                <h3>PageSpeed Monitor</h3>
-                <div class="entry-org">Automated Website Performance Testing Tool</div>
-              </div>
-              <span class="verified-tag">✓ automated</span>
-            </div>
-            <ul>
-              <li>Built a Python and Selenium script that automatically checks a website's load performance and generates a PageSpeed report.</li>
-              <li>Configured headless Chrome to run locally and on GitHub Actions, using Pandas to log results and track trends over time.</li>
-            </ul>
-            <div class="entry-links">
-              <a href="https://github.com/rohitqh10/pagespeed-monitor" target="_blank" rel="noopener">view source →</a>
-            </div>
-          </div>
+
+      <div class="coverage-grid">
+
+        <div class="coverage">
+          <strong>Functional</strong>
+          <span>Requirement and feature validation</span>
         </div>
-        <div class="entry">
-          <div class="entry-time">Mar 2025 — Dec 2025<br>Pune, India</div>
-          <div>
-            <div class="entry-head">
-              <div>
-                <h3>VitaClinic</h3>
-                <div class="entry-org">Virtual Healthcare &amp; Telemedicine Platform</div>
-              </div>
-              <span class="verified-tag">✓ tested</span>
-            </div>
-            <ul>
-              <li>Designed and executed test scenarios for authentication, appointment booking, the Razorpay payment gateway, video consultation, and prescriptions.</li>
-              <li>Performed functional, integration, regression, end-to-end, cross-browser, and UAT using HTML, CSS, JavaScript, and Firebase.</li>
-            </ul>
-          </div>
+
+        <div class="coverage">
+          <strong>Regression</strong>
+          <span>Release and change validation</span>
         </div>
+
+        <div class="coverage">
+          <strong>API</strong>
+          <span>REST API and data validation</span>
+        </div>
+
+        <div class="coverage">
+          <strong>Integration</strong>
+          <span>Application and system integrations</span>
+        </div>
+
+        <div class="coverage">
+          <strong>E-commerce</strong>
+          <span>Magento, cart and checkout</span>
+        </div>
+
+        <div class="coverage">
+          <strong>Payments</strong>
+          <span>Gateway and transaction flows</span>
+        </div>
+
+        <div class="coverage">
+          <strong>Performance</strong>
+          <span>JMeter and response analysis</span>
+        </div>
+
+        <div class="coverage">
+          <strong>UAT</strong>
+          <span>Business and production validation</span>
+        </div>
+
       </div>
+
     </div>
+
   </section>
+
+
+  <!-- SKILLS -->
 
   <section id="skills">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Skills</div>
-        <h2>Testing toolkit</h2>
+
+    <div class="container">
+
+      <div class="section-heading">
+        <span>Technical Stack</span>
+        <h2>Skills & Tools</h2>
       </div>
-      <div class="card skills-grid">
-        <div class="skill-cat">
-          <h4>Manual Testing</h4>
-          <div class="pill-row">
-            <span class="pill">Functional</span><span class="pill">Regression</span><span class="pill">Smoke</span><span class="pill">Sanity</span><span class="pill">UI</span><span class="pill">API</span><span class="pill">Integration</span><span class="pill">End-to-End</span><span class="pill">Exploratory</span><span class="pill">Cross-Browser</span><span class="pill">Performance</span><span class="pill">Security</span><span class="pill">UAT</span>
-          </div>
+
+      <div class="skills-grid">
+
+        <div class="skill-card">
+          <h3>Testing</h3>
+          <p>
+            Manual, Functional, Regression, Integration, System, UAT,
+            Exploratory, Compatibility and Web Testing.
+          </p>
         </div>
-        <div class="skill-cat">
-          <h4>Automation</h4>
-          <div class="pill-row">
-            <span class="pill">Selenium</span><span class="pill">Playwright</span><span class="pill">Python Scripting</span><span class="pill">GitHub Actions (CI)</span>
-          </div>
+
+        <div class="skill-card">
+          <h3>Automation</h3>
+          <p>
+            Playwright, Selenium, Python, browser automation,
+            regression automation and GitHub Actions.
+          </p>
         </div>
-        <div class="skill-cat">
-          <h4>QA Practices</h4>
-          <div class="pill-row">
-            <span class="pill">Requirement Analysis</span><span class="pill">Test Planning</span><span class="pill">Test Case Design</span><span class="pill">RTM</span><span class="pill">Defect Lifecycle</span><span class="pill">Release Validation</span>
-          </div>
+
+        <div class="skill-card">
+          <h3>API Testing</h3>
+          <p>
+            Postman, REST APIs, JSON validation, authentication,
+            tokens, status codes and request/response validation.
+          </p>
         </div>
-        <div class="skill-cat">
-          <h4>Tools</h4>
-          <div class="pill-row">
-            <span class="pill">Selenium</span><span class="pill">Playwright</span><span class="pill">Postman</span><span class="pill">JMeter</span><span class="pill">Jira</span><span class="pill">Git</span><span class="pill">GitHub</span>
-          </div>
+
+        <div class="skill-card">
+          <h3>Performance</h3>
+          <p>
+            JMeter, load testing, response-time analysis,
+            Lighthouse and browser network analysis.
+          </p>
         </div>
-        <div class="skill-cat">
-          <h4>Technical</h4>
-          <div class="pill-row">
-            <span class="pill">Python</span><span class="pill">SQL</span><span class="pill">HTML</span><span class="pill">CSS</span><span class="pill">JavaScript</span><span class="pill">Firebase</span>
-          </div>
+
+        <div class="skill-card">
+          <h3>E-commerce</h3>
+          <p>
+            Magento 2, product variants, pricing, cart, checkout,
+            orders, renewals and auto-renewal workflows.
+          </p>
         </div>
-        <div class="skill-cat">
-          <h4>Methodologies &amp; Domain</h4>
-          <div class="pill-row">
-            <span class="pill">SDLC</span><span class="pill">STLC</span><span class="pill">Agile</span><span class="pill">Scrum</span><span class="pill">Magento Testing</span><span class="pill">E-commerce Testing</span><span class="pill">Payment Gateway Testing</span>
-          </div>
+
+        <div class="skill-card">
+          <h3>CRM & Enterprise</h3>
+          <p>
+            Salesforce Sales Cloud, CRM testing, lead integrations,
+            WordPress and enterprise web applications.
+          </p>
         </div>
+
+        <div class="skill-card">
+          <h3>Payment Testing</h3>
+          <p>
+            PhonePe, Razorpay, Comviva, Stripe and Adyen payment
+            and recurring payment workflows.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Database</h3>
+          <p>
+            SQL, data validation, field mapping and
+            application-to-database verification.
+          </p>
+        </div>
+
+        <div class="skill-card">
+          <h3>QA Tools</h3>
+          <p>
+            Jira, Git, GitHub Actions, Chrome DevTools,
+            Lighthouse and Postman.
+          </p>
+        </div>
+
       </div>
+
     </div>
+
   </section>
+
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <div class="section-heading">
+        <span>Selected Work</span>
+        <h2>Projects</h2>
+      </div>
+
+      <div class="projects">
+
+        <div class="project">
+
+          <div class="project-number">PROJECT 01</div>
+
+          <h3>PageSpeed Monitor</h3>
+
+          <p>
+            Python and Selenium based performance monitoring tool
+            for checking mobile and desktop website performance
+            with automated reporting.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">Selenium</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">Performance</span>
+          </div>
+
+        </div>
+
+
+        <div class="project">
+
+          <div class="project-number">PROJECT 02</div>
+
+          <h3>VitaClinic</h3>
+
+          <p>
+            Virtual healthcare and telemedicine platform tested across
+            authentication, appointment booking, Razorpay payments,
+            video consultation and prescription workflows.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Functional Testing</span>
+            <span class="tag">Integration Testing</span>
+            <span class="tag">Razorpay</span>
+            <span class="tag">Firebase</span>
+          </div>
+
+        </div>
+
+
+        <div class="project">
+
+          <div class="project-number">PROJECT 03</div>
+
+          <h3>AI-Assisted QA Automation</h3>
+
+          <p>
+            Explored AI-assisted QA workflows for job matching,
+            test scenario generation, automation workflows and
+            structured quality analysis.
+          </p>
+
+          <div class="tags">
+            <span class="tag">AI Agents</span>
+            <span class="tag">Activepieces</span>
+            <span class="tag">n8n</span>
+            <span class="tag">GitHub Actions</span>
+          </div>
+
+        </div>
+
+
+        <div class="project">
+
+          <div class="project-number">PROJECT 04</div>
+
+          <h3>Payment & Order Validation</h3>
+
+          <p>
+            End-to-end validation of payment and order workflows
+            covering payment status, transaction data, order creation,
+            failures, retries and recurring payment scenarios.
+          </p>
+
+          <div class="tags">
+            <span class="tag">PhonePe</span>
+            <span class="tag">Razorpay</span>
+            <span class="tag">Comviva</span>
+            <span class="tag">Adyen</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- AI IN QA -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-heading">
+        <span>Modern QA</span>
+        <h2>AI in Quality Engineering</h2>
+      </div>
+
+      <div class="card">
+
+        <p>
+          Exploring AI-assisted approaches to improve QA workflows,
+          including test scenario generation, test analysis, job
+          matching automation, workflow orchestration and quality
+          validation.
+        </p>
+
+        <div class="tags">
+
+          <span class="tag">AI Agents</span>
+          <span class="tag">Activepieces</span>
+          <span class="tag">n8n</span>
+          <span class="tag">GitHub Copilot</span>
+          <span class="tag">MCP Tools</span>
+          <span class="tag">AI-assisted Test Generation</span>
+          <span class="tag">Workflow Automation</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CERTIFICATIONS -->
 
   <section id="certifications">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Certifications</div>
-        <h2>Verified learning</h2>
+
+    <div class="container">
+
+      <div class="section-heading">
+        <span>Learning</span>
+        <h2>Certifications</h2>
       </div>
+
       <div class="cert-grid">
-        <a href="https://www.coursera.org/learn/software-testing-fundamentals-and-methodologies/home/welcome" target="_blank" rel="noopener">
-          <div class="cert-card">
-            <span class="issuer">Microsoft (Coursera) · Aug 2026</span>
-            <h4>Software Testing Fundamentals and Methodologies</h4>
-          </div>
-        </a>
-        <div class="cert-card">
-          <span class="issuer">TestAutomationU · Jul 2026</span>
-          <h4>Introduction to Playwright</h4>
+
+        <div class="cert">
+          <h3>Software Testing Fundamentals and Methodologies</h3>
+          <p>Microsoft · 2026</p>
         </div>
-        <div class="cert-card">
-          <span class="issuer">Simplilearn · Apr 2025</span>
-          <h4>Agile Scrum Master Certification</h4>
+
+        <div class="cert">
+          <h3>Introduction to Playwright</h3>
+          <p>TestAutomationU · 2026</p>
         </div>
-        <div class="cert-card">
-          <span class="issuer">GitHub · Nov 2025</span>
-          <h4>GitHub Foundation Certification</h4>
+
+        <div class="cert">
+          <h3>Agile Scrum Master Certification</h3>
+          <p>Simplilearn · 2025</p>
         </div>
+
+        <div class="cert">
+          <h3>GitHub Foundation Certification</h3>
+          <p>GitHub · 2025</p>
+        </div>
+
       </div>
+
     </div>
+
   </section>
 
-  <section id="education-achievements">
-    <div class="wrap two-col">
-      <div>
-        <div class="eyebrow">Education</div>
-        <div class="card" style="margin-top:12px;">
-          <h3 style="font-size:17px;">B.Tech, Computer Science &amp; Engineering</h3>
-          <div class="entry-org" style="margin-top:4px;">Software Engineering · Ajeenkya DY Patil University, Pune</div>
-          <div class="mono" style="margin-top:14px; font-size:13px; color:var(--muted);">CGPA: 9.04</div>
-        </div>
+
+  <!-- EDUCATION -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="section-heading">
+        <span>Education</span>
+        <h2>Academic Background</h2>
       </div>
-      <div>
-        <div class="eyebrow">Achievements</div>
-        <div class="card" style="margin-top:12px;">
-          <ul class="achieve-list">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Winner — Hackathon #Tech25</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Runner-up — Tech Expo #Tech25</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Silver Medal — Science Olympiad</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Top 50 — Coding Ninjas Codethon</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Participant — Smart India Hackathon</li>
-          </ul>
-        </div>
+
+      <div class="card">
+
+        <h3>B.Tech in Computer Science & Engineering</h3>
+
+        <p>
+          Ajeenkya DY Patil University, Pune
+        </p>
+
+        <p style="margin-top:6px;">
+          Software Engineering · 2026 · CGPA 9.04
+        </p>
+
       </div>
+
     </div>
+
   </section>
+
+
+  <!-- CONTACT -->
 
   <section id="contact">
-    <div class="wrap">
-      <div class="contact">
-        <div class="eyebrow" style="justify-content:center; color:var(--accent);">Get in touch</div>
-        <h2>Let's talk about quality</h2>
-        <p>Open to QA roles, automation work, and conversations about testing strategy. I usually reply within a day.</p>
-        <div class="contact-links">
-          <a class="btn btn-primary" href="mailto:rohitkumargupta1007@gmail.com">Email me</a>
-          <a class="btn btn-ghost" href="https://github.com/RohitKumarGupta10" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn btn-ghost" href="https://www.linkedin.com/in/rohitkumargupta10/" target="_blank" rel="noopener">LinkedIn</a>
+
+    <div class="container">
+
+      <div class="contact-box">
+
+        <div>
+
+          <h2>Let's Connect</h2>
+
+          <p>
+            Open to QA Engineer, Software Test Engineer,
+            QA Automation and SDET opportunities.
+          </p>
+
         </div>
+
+        <div class="contact-links">
+
+          <a href="mailto:rohitkumargupta1007@gmail.com">
+            Email
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/rohitkumargupta10/"
+            target="_blank"
+          >
+            LinkedIn
+          </a>
+
+          <a
+            href="https://github.com/RohitKumarGupta10"
+            target="_blank"
+          >
+            GitHub
+          </a>
+
+          <a
+            href="https://rohit-resume-three.vercel.app/"
+            target="_blank"
+          >
+            Portfolio
+          </a>
+
+        </div>
+
       </div>
+
     </div>
+
   </section>
 
-</main>
 
-<footer>© 2026 Rohit Kumar Gupta · built with care for detail</footer>
+  <!-- FOOTER -->
 
-<script>
-  const toggle = document.getElementById('navToggle');
-  const links = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-</script>
+  <footer>
+
+    <div class="container">
+
+      © <span id="year"></span> Rohit Kumar Gupta · QA Engineer
+
+    </div>
+
+  </footer>
+
+
+  <!-- BACK TO TOP -->
+
+  <button id="topButton" title="Back to top">
+    ↑
+  </button>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    /* Current Year */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* Back To Top */
+
+    const topButton = document.getElementById("topButton");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 500) {
+        topButton.style.display = "block";
+      } else {
+        topButton.style.display = "none";
+      }
+
+    });
+
+    topButton.addEventListener("click", () => {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    });
+
+
+    /* Simple reveal animation */
+
+    const elements =
+      document.querySelectorAll(
+        ".card, .skill-card, .project, .coverage, .cert, .timeline-item"
+      );
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.08
+        }
+      );
+
+
+    elements.forEach(element => {
+
+      element.style.opacity = "0";
+      element.style.transform = "translateY(15px)";
+      element.style.transition =
+        "opacity 0.5s ease, transform 0.5s ease";
+
+      observer.observe(element);
+
+    });
+
+  </script>
 
 </body>
 </html>
